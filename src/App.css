@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply box-border;
+     }
+  
+     html,
+     body {
+        @apply h-full;
+     }
+  
+     body {
+        @apply p-0 m-0 relative bg-black text-white overflow-x-hidden scroll-smooth;
+     }
+  
+     body.stop-scroll {
+        @apply !overflow-hidden;
+     }
+  
+     h1,
+     h2,
+     h3,
+     h4,
+     h5,
+     h6 {
+        @apply m-0;
+     }
+
+
+}
+
+@layer components {
+   .line {
+      @apply w-[120px] h-[1px] relative overflow-hidden bg-[#fdf252] rounded-[20px];
+   }
+   
+   .line:before {
+      content: "";
+      -webkit-animation: lineAnim 2s linear ;
+      -moz-animation: lineAnim 2s linear ;
+      animation: lineAnim 2s linear ;
+      @apply absolute left-[-50%] h-[1px] w-[40%] bg-black rounded-[20px];
+   }
+
+   .banner {
+      background-image:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/public/images/uni.jpg);
+   }
+   .banner:after {
+       content: "";
+       @apply absolute w-[766px] h-[766px] bottom-0 right-[-25%] top-[-44px] bg-[url('../public/images/circle.png')] bg-no-repeat rounded-[50%] bg-contain  opacity-[0.2];
+       -webkit-animation: infinite-spinning 8s linear infinite;
+       -o-animation: infinite-spinning 8s infinite linear;
+       animation: infinite-spinning 8s linear infinite;
+   }
+}
+
+@layer utilities {
+   .entry {
+      @apply relative bg-[#f8f8f8] rounded-[14px] p-[10px] h-[410px] text-white;
+      background: rgba(255,255,255,0.15);
+   }
+   
+   .entry__header {
+      @apply text-[18px] font-bold uppercase pb-[10px];
+   }
+   
+   .entry__info {
+      @apply relative z-[1] text-[12px] py-[4px] my-[6px];
+      border-bottom: 1px solid #666;
+   }
+   
+   .entry__label {
+      @apply font-bold;
+   }
+   
+   .content-border-t {
+      border-top-width: 1px;
+      border-color: #fdf252;
+   }
+   
+   .col-3 {
+      @apply grid justify-center gap-x-[3%];
+      grid-template-columns: 31% 31% 31%;
+   }
+   
+    .pagination {
+      @apply text-center;
+    }
+    .pagination,
+    .pagination * {
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+    }
+    .pagination a {
+      @apply inline-block py-3 cursor-pointer m-[10px] text-[#fdf252];
+    }
+   
+    .pagination a.disabled {
+      @apply opacity-30 pointer-events-none cursor-not-allowed;
+    }
+    .pagination a.current {
+      @apply text-[22px];
+    }
+}
+
+
+@keyframes lineAnim {
+   0% {
+       left: -40%;
+   }
+   50% {
+       left: 20%;
+       width: 80%;
+   }
+   100% {
+       left: 100%;
+       width: 100%;
+   }
+}
+
+@keyframes infinite-spinning {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+
+
